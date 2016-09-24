@@ -25,9 +25,11 @@ module FixDistinct
       scope.readonly!
     end
 
+    # START FIX
     if preload_values[:distinct] || values[:distinct]
       scope.distinct!
     end
+    # END FIX
 
     if options[:as]
       scope.where!(klass.table_name => { reflection.type => model.base_class.sti_name })
